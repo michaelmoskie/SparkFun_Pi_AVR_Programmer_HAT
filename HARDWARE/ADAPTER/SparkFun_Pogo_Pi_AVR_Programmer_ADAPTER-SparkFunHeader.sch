@@ -4523,6 +4523,19 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <text x="1.27" y="1.27" size="0.4064" layer="25">&gt;Name</text>
 <text x="1.27" y="-3.81" size="0.4064" layer="27">&gt;VALUE</text>
 </package>
+<package name="AVR_MINI_PROG">
+<wire x1="-1" y1="1" x2="-1" y2="-1" width="0.2032" layer="21"/>
+<wire x1="-1" y1="-1" x2="8.5" y2="-1" width="0.2032" layer="21"/>
+<wire x1="8.5" y1="-1" x2="8.5" y2="1" width="0.2032" layer="21"/>
+<wire x1="8.5" y1="1" x2="-1" y2="1" width="0.2032" layer="21"/>
+<wire x1="0.62" y1="0.76" x2="-0.65" y2="0.76" width="0.2032" layer="21"/>
+<pad name="1" x="0" y="0" drill="0.8" diameter="1.27" shape="square"/>
+<pad name="2" x="1.5" y="0" drill="0.8" diameter="1.27"/>
+<pad name="3" x="3" y="0" drill="0.8" diameter="1.27"/>
+<pad name="4" x="4.5" y="0" drill="0.8" diameter="1.27"/>
+<pad name="5" x="6" y="0" drill="0.8" diameter="1.27"/>
+<pad name="6" x="7.5" y="0.01" drill="0.8" diameter="1.27"/>
+</package>
 </packages>
 <symbols>
 <symbol name="ARDUINO_SERIAL_PROGRAM">
@@ -4577,6 +4590,26 @@ It is used to mate with our FTDI Basic serial programmers using the Arduino IDE.
 <pin name="4" x="5.08" y="2.54" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="5" x="5.08" y="5.08" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
 <pin name="6" x="5.08" y="7.62" visible="pad" length="middle" direction="pas" swaplevel="1" rot="R180"/>
+</symbol>
+<symbol name="AVR_MINI_PROGRAMMER">
+<wire x1="-3.81" y1="7.62" x2="5.08" y2="7.62" width="0.4064" layer="94"/>
+<wire x1="-1.27" y1="0" x2="-2.54" y2="0" width="0.6096" layer="94"/>
+<wire x1="-1.27" y1="2.54" x2="-2.54" y2="2.54" width="0.6096" layer="94"/>
+<wire x1="-1.27" y1="5.08" x2="-2.54" y2="5.08" width="0.6096" layer="94"/>
+<wire x1="5.08" y1="-10.16" x2="5.08" y2="7.62" width="0.4064" layer="94"/>
+<wire x1="-3.81" y1="7.62" x2="-3.81" y2="-10.16" width="0.4064" layer="94"/>
+<wire x1="5.08" y1="-10.16" x2="-3.81" y2="-10.16" width="0.4064" layer="94"/>
+<wire x1="-1.27" y1="-5.08" x2="-2.54" y2="-5.08" width="0.6096" layer="94"/>
+<wire x1="-1.27" y1="-2.54" x2="-2.54" y2="-2.54" width="0.6096" layer="94"/>
+<wire x1="-1.27" y1="-7.62" x2="-2.54" y2="-7.62" width="0.6096" layer="94"/>
+<text x="6.096" y="10.414" size="1.778" layer="96" rot="R180">&gt;VALUE</text>
+<text x="5.08" y="-10.922" size="1.778" layer="95" rot="R180">&gt;NAME</text>
+<pin name="VCC" x="-7.62" y="5.08" visible="pin" length="middle" direction="pas" swaplevel="1"/>
+<pin name="GND" x="-7.62" y="2.54" visible="pin" length="middle" direction="pas" swaplevel="1"/>
+<pin name="RST" x="-7.62" y="0" visible="pin" length="middle" direction="pas" swaplevel="1"/>
+<pin name="MOSI" x="-7.62" y="-2.54" visible="pin" length="middle" direction="pas" swaplevel="1"/>
+<pin name="SCK" x="-7.62" y="-5.08" visible="pin" length="middle" direction="pas" swaplevel="1"/>
+<pin name="MISO" x="-7.62" y="-7.62" visible="pin" length="middle" direction="pas" swaplevel="1"/>
 </symbol>
 </symbols>
 <devicesets>
@@ -4998,6 +5031,27 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 </device>
 </devices>
 </deviceset>
+<deviceset name="AVR_MINI_PROG">
+<description>AVR ISP 6-pin inline header</description>
+<gates>
+<gate name="G$1" symbol="AVR_MINI_PROGRAMMER" x="0" y="0"/>
+</gates>
+<devices>
+<device name="SMD" package="AVR_MINI_PROG">
+<connects>
+<connect gate="G$1" pin="GND" pad="2"/>
+<connect gate="G$1" pin="MISO" pad="6"/>
+<connect gate="G$1" pin="MOSI" pad="4"/>
+<connect gate="G$1" pin="RST" pad="3"/>
+<connect gate="G$1" pin="SCK" pad="5"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
 </devicesets>
 </library>
 </libraries>
@@ -5016,6 +5070,7 @@ will be further integrated into the Sparkfun Library for other footprints.  It c
 <part name="FRAME1" library="SparkFun-Aesthetics" deviceset="FRAME-LETTER" device=""/>
 <part name="LOGO1" library="SparkFun-Aesthetics" deviceset="SFE_LOGO_FLAME" device=".1_INCH"/>
 <part name="JP1" library="SparkFun-Connectors" deviceset="M06" device="POLAR"/>
+<part name="U$12" library="SparkFun-Connectors" deviceset="AVR_MINI_PROG" device="SMD"/>
 </parts>
 <sheets>
 <sheet>
@@ -5037,6 +5092,7 @@ Michael Moskie</text>
 <instance part="FRAME1" gate="V" x="154.94" y="182.88"/>
 <instance part="LOGO1" gate="G$1" x="228.6" y="220.98"/>
 <instance part="JP1" gate="G$1" x="106.68" y="251.46"/>
+<instance part="U$12" gate="G$1" x="106.68" y="228.6" rot="R180"/>
 </instances>
 <busses>
 </busses>
@@ -5052,6 +5108,11 @@ Michael Moskie</text>
 <wire x1="111.76" y1="248.92" x2="114.3" y2="248.92" width="0.1524" layer="91"/>
 <label x="114.3" y="248.92" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U$12" gate="G$1" pin="MOSI"/>
+<wire x1="114.3" y1="231.14" x2="116.84" y2="231.14" width="0.1524" layer="91"/>
+<label x="116.84" y="231.14" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="MISO_C" class="0">
 <segment>
@@ -5063,6 +5124,11 @@ Michael Moskie</text>
 <pinref part="JP1" gate="G$1" pin="6"/>
 <wire x1="111.76" y1="259.08" x2="114.3" y2="259.08" width="0.1524" layer="91"/>
 <label x="114.3" y="259.08" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U$12" gate="G$1" pin="MISO"/>
+<wire x1="114.3" y1="236.22" x2="116.84" y2="236.22" width="0.1524" layer="91"/>
+<label x="116.84" y="236.22" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="SCK_C" class="0">
@@ -5076,6 +5142,11 @@ Michael Moskie</text>
 <wire x1="111.76" y1="256.54" x2="114.3" y2="256.54" width="0.1524" layer="91"/>
 <label x="114.3" y="256.54" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U$12" gate="G$1" pin="SCK"/>
+<wire x1="114.3" y1="233.68" x2="116.84" y2="233.68" width="0.1524" layer="91"/>
+<label x="116.84" y="233.68" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="RST_C" class="0">
 <segment>
@@ -5087,6 +5158,11 @@ Michael Moskie</text>
 <pinref part="JP1" gate="G$1" pin="4"/>
 <wire x1="111.76" y1="254" x2="114.3" y2="254" width="0.1524" layer="91"/>
 <label x="114.3" y="254" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U$12" gate="G$1" pin="RST"/>
+<wire x1="114.3" y1="228.6" x2="116.84" y2="228.6" width="0.1524" layer="91"/>
+<label x="116.84" y="228.6" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 <net name="GND_C" class="0">
@@ -5100,6 +5176,11 @@ Michael Moskie</text>
 <wire x1="111.76" y1="246.38" x2="114.3" y2="246.38" width="0.1524" layer="91"/>
 <label x="114.3" y="246.38" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="U$12" gate="G$1" pin="GND"/>
+<wire x1="114.3" y1="226.06" x2="116.84" y2="226.06" width="0.1524" layer="91"/>
+<label x="116.84" y="226.06" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="VCC_C" class="0">
 <segment>
@@ -5111,6 +5192,11 @@ Michael Moskie</text>
 <pinref part="JP1" gate="G$1" pin="3"/>
 <wire x1="111.76" y1="251.46" x2="114.3" y2="251.46" width="0.1524" layer="91"/>
 <label x="114.3" y="251.46" size="1.27" layer="95" xref="yes"/>
+</segment>
+<segment>
+<pinref part="U$12" gate="G$1" pin="VCC"/>
+<wire x1="114.3" y1="223.52" x2="116.84" y2="223.52" width="0.1524" layer="91"/>
+<label x="116.84" y="223.52" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
